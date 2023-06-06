@@ -1,7 +1,7 @@
 {
-  "name": "openmrs-module-versiontrucker",
+  "name": "openmrs-module-versiontracker-api",
   "version": "1.0.0",
-  "description": "openmrs version trucker",
+  "description": "openmrs version tracker api",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon ./app.js"
