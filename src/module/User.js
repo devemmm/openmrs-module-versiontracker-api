@@ -27,7 +27,7 @@ const Schema = db.define("User", {
     },
     type: {
         type: Sequelize.ENUM(['USER', 'ADMIN']),
-        defaultValue: 'ADMIN'
+        defaultValue: 'USER'
     },
     avatar: {
         type: Sequelize.STRING
@@ -35,7 +35,7 @@ const Schema = db.define("User", {
     createdAt: Sequelize.DATE,
     updatedAt: Sequelize.DATE
 }, {
-    tableName: 'module_truck_user'
+    tableName: 'user'
 })
 
 Schema.hasMany(Token)

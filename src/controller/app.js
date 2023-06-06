@@ -44,9 +44,6 @@ class Controller {
     registerFacility = [
         requireAuth, async (req, res) => {
             try {
-                // db.sync()
-                //     .then((result) => console.log("table created"))
-                //     .catch((error) => console.log("error ocpaied", error.message))
                 let files = await new Service().registerHealthFacility(req.body);
                 res.status(201).json({ statusCode: 200, status: "successfull", files })
             } catch (error) {

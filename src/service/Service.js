@@ -76,7 +76,6 @@ class Service {
             const healthFacility = new HealthFacility({
                 ...data
             })
-            console.log(healthFacility)
             await healthFacility.save()
             return { message: "Health Facility Registered successfull", healthFacility }
         } catch (error) {

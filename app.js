@@ -22,3 +22,8 @@ app.use(express.static(publicDirectoryPath1))
 app.use(appRoute)
 
 app.listen(port, () => console.log(`SQL Upload API is running on port ${port}`))
+
+// const { db } = require('./src/database/dbConfig')
+// db.sync()
+//     .then((result) => console.log("table created"))
+//     .catch((error) => console.log("error ocpaied", error.message))
