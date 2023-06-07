@@ -15,6 +15,9 @@ const Schema = db.define("Module", {
         type: Sequelize.STRING,
         allowNull: false
     },
+    healthFacilityFosid:{
+        type: Sequelize.STRING,
+    },
     createdAt: Sequelize.DATE,
     updatedAt: Sequelize.DATE
 }, {
