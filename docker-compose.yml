@@ -1,0 +1,8 @@
+version: '3.5'
+
+services:
+  app:
+    image: module_version_tracker:local
+    ports:
+      - "8888:8888"
+    restart: always
