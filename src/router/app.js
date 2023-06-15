@@ -12,7 +12,7 @@ router.get('/module/api/facilities/:id', new Controller().facilityInfo)
 
 router.post('/module/api/register/facility', new Controller().registerFacility)
 
-router.post('/module/api/user/addupdatemodule', new Controller().addUpdateModule)
+router.post('/module/api/addupdatemodule', new Controller().addUpdateModule)
 
 
 
