@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   app:
-    image: module_version_tracker:local
+    image: openmrs_tracker_api:latest
     ports:
       - "8888:8888"
     restart: always

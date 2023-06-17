@@ -1,6 +1,10 @@
 const Sequelize = require('sequelize')
 const { db } = require('../database/dbConfig')
 const Module = require('./Module')
+const DataBaseInformation = require('./DataBaseInformation')
+const JavaRuntimeEnvironmentInformation = require('./JavaRuntimeEnvironmentInformation')
+const MemoryInformation = require('./MemoryInformation')
+const OpenmrsInformation = require('./OpenmrsInformation')
 
 const Schema = db.define("HealthFacility", {
     fosid: {
@@ -48,6 +52,14 @@ const Schema = db.define("HealthFacility", {
 })
 
 Schema.hasMany(Module)
+Schema.hasOne(DataBaseInformation)
+Schema.hasOne(JavaRuntimeEnvironmentInformation)
+Schema.hasOne(MemoryInformation)
+Schema.hasOne(OpenmrsInformation)
 Module.belongsTo(Schema)
+DataBaseInformation.belongsTo(Schema)
+JavaRuntimeEnvironmentInformation.belongsTo(Schema)
+MemoryInformation.belongsTo(Schema)
+OpenmrsInformation.belongsTo(Schema)
 
 module.exports = Schema;
