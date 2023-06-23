@@ -23,12 +23,11 @@ const requireAuth = (req, res, next) => {
                 }
                 const user = await User.findByPk(payload.id)
 
-                console.log(user.type)
-
                 if (user.type !== "ADMIN") {
                     throw new Error("you are not allowed to access this data")
                 }
 
+                req.user = user;
                 next()
             } catch (error) {
                 res.status(401).json({ error: { statusCode: 401, status: "failed", message: error.message } })

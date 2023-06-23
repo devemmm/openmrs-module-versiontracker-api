@@ -41,6 +41,16 @@ class Controller {
         }
     ]
 
+    account = [
+        requireAuth, async(req, res)=>{
+            try {
+                res.status(200).json({ statusCode: 200, status: "successfull", message: "you are logged in", data: { user : req.user}})
+            } catch (error) {
+                res.status(400).json({ error: { statusCode: 400, status: "failed", message: error.message } })
+            }
+        }
+    ]
+
     registerFacility = [
         requireAuth, async (req, res) => {
             try {
@@ -52,19 +62,8 @@ class Controller {
         }
     ]
 
-    addUpdateModule = [
-        async (req, res) => {
-            try {
-                let response = await new Service().addUpdateModule(req.body);
-                res.status(201).json({ statusCode: 200, status: "successfull", response })
-            } catch (error) {
-                res.status(400).json({ error: { statusCode: 400, status: "failed", message: error.message } })
-            }
-        }
-    ]
-
     updateSystemInformation = [
-        async (req, res) => {
+        requireAuth, async (req, res) => {
             try {
                 let response = await new Service().UpdateSystemInformation(req.body);
                 res.status(201).json({ statusCode: 200, status: "successfull", response })

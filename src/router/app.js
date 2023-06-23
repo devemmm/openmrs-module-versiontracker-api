@@ -6,6 +6,8 @@ router.post('/signin', new Controller().signin)
 
 router.post('/signup', new Controller().signup)
 
+router.get('/users/me', new Controller().account)
+
 router.get('/facilities', new Controller().facilityInfo)
 
 router.get('/facilities/:id', new Controller().facilityInfo)
