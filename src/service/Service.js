@@ -21,7 +21,7 @@ class Service {
         }
 
         try {
-            let user = await User.findOne({ email })
+            let user = await User.findOne({ where: { email } })
 
             if (!user) {
                 throw new Error('email not found')
@@ -88,7 +88,7 @@ class Service {
 
 
     }
-    
+
     UpdateSystemInformation = async (data) => {
         try {
             if (data.fosid) {
