@@ -7,10 +7,11 @@ const requireAuth = (req, res, next) => {
 
     try {
         if (!authorization) {
+            throw new Error('authorization token is null')
+        }
+
+        if (authorization && req.body.authorization){
             authorization = req.body.authorization
-            if (!authorization) {
-                throw new Error('authorization token is null')
-            }
         }
 
         const token = authorization.replace('Bearer ', "");
