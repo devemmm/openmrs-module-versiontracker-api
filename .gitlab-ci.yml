@@ -7,6 +7,7 @@ docker-build:
   only:
     refs:
       - dev
+      - uat
   stage: package
   cache:
     untracked: true
@@ -21,10 +22,10 @@ docker-build:
     DB_NAME: "openmrs_tracker"
     DB_USER: "root"
     DB_PASSWORD: "root"
-    DB_HOST: "10.100.100.25"
+    DB_HOST: "10.10.69.42"
     DB_TYPE: "mysql"
     JWT_SECRET: "7f2582b2-a39a-4b4e-bb0d-de25bddef8f2"
-    API_URL: "http://10.100.100.25:8888"
+    API_URL: "http://10.10.69.42:8888"
   before_script:
     - ls
     - pwd
