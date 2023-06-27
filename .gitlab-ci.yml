@@ -1,0 +1,34 @@
+stages:
+  - build
+  - package
+  - deploy
+docker-build:
+  image: docker:24.0.2
+  only:
+    refs:
+      - dev
+  stage: package
+  cache:
+    untracked: true
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+  services:
+    - docker:24.0.2-dind
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+    PORT: "8888"
+    DB_NAME: "openmrs_tracker"
+    DB_USER: "root"
+    DB_PASSWORD: "root"
+    DB_HOST: "10.100.100.25"
+    DB_TYPE: "mysql"
+    JWT_SECRET: "7f2582b2-a39a-4b4e-bb0d-de25bddef8f2"
+    API_URL: "http://10.100.100.25:8888"
+  before_script:
+    - ls
+    - pwd
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
