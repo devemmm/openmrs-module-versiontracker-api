@@ -17,11 +17,13 @@ install_dependencies:
       - node_modules/
 
 docker-build:
+  image: docker:24.0.2
   only:
     refs:
       - dev-ci/cd
   stage: package
-  environment: build
+  services:
+    - docker:24.0.2-dind
   variables:
     IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
     PORT: "8888"
